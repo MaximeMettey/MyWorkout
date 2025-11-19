@@ -18,7 +18,7 @@ import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 import { useWorkout } from '../contexts/WorkoutContext';
 
-const HomeScreen = () => {
+const HomeScreen = ({ navigation }: any) => {
   const theme = useTheme();
   const { startWorkout, isWorkoutInProgress, currentWorkout } = useWorkout();
   const [recentWorkouts] = useState([
@@ -40,6 +40,7 @@ const HomeScreen = () => {
 
   const handleStartWorkout = () => {
     startWorkout('Nouvelle Séance');
+    navigation.navigate('ActiveWorkout');
   };
 
   return (
@@ -72,7 +73,9 @@ const HomeScreen = () => {
               <Paragraph>{currentWorkout.exercises.length} exercices</Paragraph>
             </Card.Content>
             <Card.Actions>
-              <Button mode="contained">Reprendre</Button>
+              <Button mode="contained" onPress={() => navigation.navigate('ActiveWorkout')}>
+                Reprendre
+              </Button>
             </Card.Actions>
           </Card>
         )}

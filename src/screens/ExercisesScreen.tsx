@@ -12,7 +12,7 @@ import {
 import { EXERCISES } from '../data/exercises';
 import { MuscleGroup, EquipmentType } from '../models';
 
-const ExercisesScreen = () => {
+const ExercisesScreen = ({ navigation }: any) => {
   const theme = useTheme();
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedMuscle, setSelectedMuscle] = useState<MuscleGroup | null>(null);
@@ -131,7 +131,7 @@ const ExercisesScreen = () => {
                   }
                 />
               )}
-              onPress={() => console.log('Exercise detail', exercise.id)}
+              onPress={() => navigation.navigate('ExerciseDetail', { exerciseId: exercise.id })}
             />
           ))}
         </Card>

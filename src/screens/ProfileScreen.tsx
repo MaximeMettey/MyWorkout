@@ -13,7 +13,7 @@ import {
 import { useAuth } from '../contexts/AuthContext';
 import { calculateBMI, interpretBMI } from '../utils/calculations';
 
-const ProfileScreen = () => {
+const ProfileScreen = ({ navigation }: any) => {
   const theme = useTheme();
   const { user, signOut } = useAuth();
 
@@ -142,7 +142,7 @@ const ProfileScreen = () => {
             left={(props) => <List.Icon {...props} icon="tape-measure" />}
           />
           <Card.Actions>
-            <Button onPress={() => console.log('Add measurement')}>
+            <Button onPress={() => navigation.navigate('BodyMeasurement')}>
               Ajouter une mesure
             </Button>
           </Card.Actions>

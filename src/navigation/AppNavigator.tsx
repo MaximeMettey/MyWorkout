@@ -4,11 +4,11 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { useTheme } from 'react-native-paper';
 import { MaterialCommunityIcons } from '@expo/vector-icons';
 
-import HomeScreen from '../screens/HomeScreen';
-import ExercisesScreen from '../screens/ExercisesScreen';
-import NutritionScreen from '../screens/NutritionScreen';
+import { HomeStackNavigator } from './HomeStackNavigator';
+import { ExercisesStackNavigator } from './ExercisesStackNavigator';
+import { NutritionStackNavigator } from './NutritionStackNavigator';
 import StatisticsScreen from '../screens/StatisticsScreen';
-import ProfileScreen from '../screens/ProfileScreen';
+import { ProfileStackNavigator } from './ProfileStackNavigator';
 
 import { MainTabParamList } from './types';
 
@@ -34,9 +34,10 @@ const AppNavigator = () => {
       >
         <Tab.Screen
           name="Home"
-          component={HomeScreen}
+          component={HomeStackNavigator}
           options={{
             title: 'Entraînements',
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="dumbbell" size={size} color={color} />
             ),
@@ -44,9 +45,10 @@ const AppNavigator = () => {
         />
         <Tab.Screen
           name="Exercises"
-          component={ExercisesScreen}
+          component={ExercisesStackNavigator}
           options={{
             title: 'Exercices',
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="weight-lifter" size={size} color={color} />
             ),
@@ -54,9 +56,10 @@ const AppNavigator = () => {
         />
         <Tab.Screen
           name="Nutrition"
-          component={NutritionScreen}
+          component={NutritionStackNavigator}
           options={{
             title: 'Nutrition',
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="food-apple" size={size} color={color} />
             ),
@@ -74,9 +77,10 @@ const AppNavigator = () => {
         />
         <Tab.Screen
           name="Profile"
-          component={ProfileScreen}
+          component={ProfileStackNavigator}
           options={{
             title: 'Profil',
+            headerShown: false,
             tabBarIcon: ({ color, size }) => (
               <MaterialCommunityIcons name="account" size={size} color={color} />
             ),

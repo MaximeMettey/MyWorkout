@@ -14,7 +14,7 @@ import {
 import { format } from 'date-fns';
 import { fr } from 'date-fns/locale';
 
-const NutritionScreen = () => {
+const NutritionScreen = ({ navigation }: any) => {
   const theme = useTheme();
   const [selectedDate] = useState(new Date());
 
@@ -210,7 +210,7 @@ const NutritionScreen = () => {
             </Paragraph>
           </Card.Content>
           <Card.Actions>
-            <Button onPress={() => console.log('Open calculator')}>
+            <Button onPress={() => navigation.navigate('CaloriesCalculator')}>
               Ouvrir le calculateur
             </Button>
           </Card.Actions>
@@ -222,7 +222,7 @@ const NutritionScreen = () => {
         style={[styles.fab, { backgroundColor: theme.colors.primary }]}
         icon="plus"
         label="Ajouter repas"
-        onPress={() => console.log('Add meal')}
+        onPress={() => navigation.navigate('AddMeal', { date: selectedDate.toISOString().split('T')[0] })}
       />
     </View>
   );
